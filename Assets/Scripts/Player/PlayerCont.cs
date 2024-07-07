@@ -62,7 +62,7 @@ public class PlayerCont : MonoBehaviour
 
     private bool isWalkable(Vector2 vector) 
     {
-        if (Physics2D.OverlapCircle(vector, 0.02f, solidsLayer) != null)
+        if (Physics2D.OverlapCircle(vector, 0f, solidsLayer) != null)
         {
             return false;
         }
