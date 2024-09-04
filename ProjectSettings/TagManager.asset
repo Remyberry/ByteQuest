@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - 
   - Solids
   - Objects
-  - 
-  - 
+  - Blockers
+  - Characters
   - 
   - 
   - 
@@ -52,4 +53,13 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 127347203
+    locked: 0
+  - name: Wall Collisions
+    uniqueID: 1271298623
+    locked: 0
+  - name: Floor
+    uniqueID: 1853544415
+    locked: 0
+  - name: Characters
+    uniqueID: 1009044633
     locked: 0
