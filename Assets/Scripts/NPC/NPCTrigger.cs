@@ -6,7 +6,9 @@ using UnityEngine.UIElements;
 public class NPCTrigger : MonoBehaviour
 {
     [Header("NPC Name")]
-    [SerializeField] private NPC npc;
+    [SerializeField] public NPC npc;
+    [Header("Book")]
+    [SerializeField] public GameObject bookItem;
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
     [Header("Ink JSON")]
@@ -25,7 +27,12 @@ public class NPCTrigger : MonoBehaviour
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             visualCue.SetActive(true);
+            if (bookItem != null) {
+                bookItem.SetActive(true);
+            }
             if (Input.GetKeyDown(KeyCode.I)) {
+                string npcName = npc.name;
+                StaticData.npcName = npcName;
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
                 Debug.Log("Key pressed I");
             }
@@ -42,6 +49,7 @@ public class NPCTrigger : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerInRange = true;
+            Debug.Log("NPC in range!");
         }
     }
 
@@ -50,7 +58,7 @@ public class NPCTrigger : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerInRange = false;
-            Debug.Log("Exit!");
+            Debug.Log("NPC out of range!");
         }
     }
 }

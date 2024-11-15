@@ -6,4 +6,5 @@ using UnityEngine;
 public class NPC
 {
     public string name;
+    public GameObject[] objectsHolding;
 }

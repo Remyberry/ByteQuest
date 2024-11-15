@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - NPC
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -48,17 +49,17 @@ TagManager:
   - name: FG
     uniqueID: 600268917
     locked: 0
-  - name: Objects
-    uniqueID: 3736928993
+  - name: Floor
+    uniqueID: 1853544415
     locked: 0
   - name: Player
     uniqueID: 127347203
     locked: 0
+  - name: Objects
+    uniqueID: 3736928993
+    locked: 0
   - name: Wall Collisions
     uniqueID: 1271298623
-    locked: 0
-  - name: Floor
-    uniqueID: 1853544415
     locked: 0
   - name: Characters
     uniqueID: 1009044633

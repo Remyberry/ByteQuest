@@ -9,18 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 4fe550f44d052c94ca1f1ca7cab17df3
   - enabled: 1
-    path: Assets/Scenes/RoadMap.unity
-    guid: 613cdc72bf690c6478f075daef812eac
+    path: Assets/Scenes/TestScene.unity
+    guid: ec9a2a3fef0f5af489123093cedc2964
   - enabled: 1
-    path: Assets/Scenes/LessonsList.unity
-    guid: 271e2afe76a786547aab746f108a5ef0
-  - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: 5daed50799cdf0d4eb9623ba1f2ed8a0
-  - enabled: 1
-    path: Assets/Scenes/Lesson1.unity
-    guid: d37615e8ad0769a479ff8ab1fdf91dd0
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/BattleScene.unity
+    guid: a5da89579b6bc3c4a9a1ec8854dbf9b0
   m_configObjects: {}

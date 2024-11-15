@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "QuestInfoSO", menuName = "ScriptableObjects/QuestInfoSO", order = 1)]
+[CreateAssetMenu(fileName = "QuestInfoSO", menuName = "Quest/QuestInfoSO", order = 1)]
 public class QuestInfoSO : ScriptableObject
 {
     [field: SerializeField] public string id { get; private set; }
@@ -15,8 +15,8 @@ public class QuestInfoSO : ScriptableObject
     [Header("Steps")]
     public GameObject[] questStepsPrefabs;
     [Header("Rewards")]
+    public GameObject[] questItems;
     public int goldReward;
-    public int exp;
 
     private void OnValidate()
     {

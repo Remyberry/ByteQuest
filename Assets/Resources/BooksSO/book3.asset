@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a2941eca88cf545ac5c38357f05691, type: 3}
+  m_Name: book3
+  m_EditorClassIdentifier: 
+  gameobject: {fileID: 6904908503624761451, guid: a2e4125cd22df2b4c93bf6b89ee01fd2, type: 3}
+  type: 1
+  description: 
+  title: Hexadecimal Arithmetic and Bitwise Operations
+  content: "Lesson 3: Hexadecimal Arithmetic and Bitwise Operations\r\nObjective:
+    Learn to use hexadecimal values and perform bitwise operations.\n\r\nInstructions
+    Covered:\r\nHexadecimal Values: Use 0x prefix to specify hex values, or just
+    use the value if the context expects hex.\r\nAND, OR, XOR: Perform bitwise operations.\r\nMOV
+    AL, 0xF0\r\nAND AL, 0x0F    ; AL becomes 0x00\r\nSHL (Shift Left): Shifts bits
+    in a register to the left by a specified count.\r\nExercise Application: In Exercise
+    5 (Logic Lizard) and Exercise 6 (Shifty Snake), you\u2019ll use AND to filter
+    bits and SHL to multiply a value by powers of 2.\r\n\r\n"
