@@ -4,11 +4,25 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
     private BoxCollider2D boxCollider;
     public InventoryObject inventory;
     private Vector3 moveDelta;
     private RaycastHit2D hit;
     public Animator animator;
+
+    public static Player GetInstance()
+    {
+        return instance;
+    }
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("Found more than one player in the scene");
+        }
+        instance = this;
+    }
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
@@ -17,17 +31,26 @@ public class Player : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         var item = collision.GetComponent<Item>();
-        if (item)
-        {
-            Debug.Log("Item Received!");
-            inventory.AddItem(item.item, 1);
-            Destroy(collision.gameObject);
+        if (item != null) {
+            if (item.item.type == ItemType.Book)
+            {
+                Debug.Log("Book Received!");
+                inventory.AddItem(item.item, 1);
+                Destroy(collision.gameObject);
+            }
+            if (item.item.type == ItemType.Badge)
+            {
+                Debug.Log("Badge Received!");
+                inventory.AddBadge(item.item, 1);
+                Destroy(collision.gameObject);
+            }
         }
     }
 
     private void OnApplicationQuit()
     {
         inventory.Container.Clear();
+        inventory.BadgeContainer.Clear();
     }
 
     public void Update()
@@ -81,6 +104,9 @@ public class Player : MonoBehaviour
             //transform ovement
             transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
         }
+        else {
+            Debug.Log("HIT");
+        }
 
         hit = Physics2D.BoxCast(transform.position, boxCollider.size/2, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Characters", "Blockers"));
 
@@ -89,6 +115,9 @@ public class Player : MonoBehaviour
             //transform ovement
             transform.Translate(moveDelta.x * Time.deltaTime, 0 , 0);
         }
-
+        else
+        {
+            Debug.Log("HIT");
+        }
     }
 }

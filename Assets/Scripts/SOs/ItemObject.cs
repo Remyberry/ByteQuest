@@ -4,15 +4,12 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Key,
     Book,
-    QuestItem,
+    Badge,
     Default
 }
 public abstract class ItemObject : ScriptableObject
 {
     public GameObject gameobject;
     public ItemType type;
-    [TextArea(15,20)]
-    public string description;
 }

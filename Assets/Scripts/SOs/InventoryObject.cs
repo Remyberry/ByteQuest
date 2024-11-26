@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEditor;
 using Unity.VisualScripting;
+using static UnityEditor.Progress;
 
 [CreateAssetMenu(fileName = "InventorySO", menuName = "ScriptableObjects/InventorySO")]
 public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
@@ -12,7 +13,7 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
     public string savePath;
     private ItemDatabaseObject database;
     public List<InventorySlot> Container = new List<InventorySlot>();
-
+    public List<InventorySlot> BadgeContainer = new List<InventorySlot>();
     private void OnEnable()
     {
 #if UNITY_EDITOR
@@ -32,7 +33,19 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
                 return;
             }
         }
-        Container.Add(new InventorySlot(database.GetId[_item],_item, _amount));
+        Container.Add(new InventorySlot(database.GetBookId[_item],_item, _amount));
+    }
+    public void AddBadge(ItemObject _badge, int _amount) 
+    {
+        for (int i = 0; i < BadgeContainer.Count; i++)
+        {
+            if (BadgeContainer[i].item == _badge)
+            {
+                BadgeContainer[i].AddAmount(_amount);
+                return;
+            }
+        }
+        BadgeContainer.Add(new InventorySlot(database.GetBadgeId[_badge], _badge, _amount));
     }
     public void Save()
     {
@@ -55,7 +68,11 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
     {
         for (int i = 0; i < Container.Count; i++)
         {
-            Container[i].item = database.GetItem[Container[i].ID];
+            Container[i].item = database.GetBook[Container[i].ID];
+        }
+        for (int i = 0; i < BadgeContainer.Count; i++)
+        {
+            BadgeContainer[i].item = database.GetBadge[BadgeContainer[i].ID];
         }
     }
 

@@ -9,14 +9,50 @@ public class SceneLoader : MonoBehaviour
     public Scene mainMenu;
     public Scene mainScene;
     public Scene battleScene;
-
+    public Scene tutorialScene;
+    //public bool tutorialIsActive { get; private set; }
+    public static SceneLoader instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("Found more than one menu manager in the scene");
+        }
+        instance = this;
+    }
+  
+    public static SceneLoader GetInstance()
+    {
+        return instance;
+    }
     private void Start()
     {
-        mainScene = SceneManager.GetActiveScene();
+        //tutorialScene = SceneManager.GetSceneByBuildIndex(1);
+        //mainScene = SceneManager.GetSceneByBuildIndex(2);
+        //battleScene = SceneManager.GetSceneByBuildIndex(3);
+
+        GameObject player = GameObject.Find("Player"); // Replace "Player" with your player's name
+
+        if (player != null)
+        {
+            player.transform.position = GameSaveManager.Instance.playerPosition;
+        }
+        else
+        {
+            Debug.LogError("Player object not found.");
+        }
     }
     public void LoadScene(string sceneName) 
     {
-        SceneManager.LoadScene(sceneName);
+        if (sceneName == "Tutorial") 
+        {
+            StaticData.tutorialIsActive = true;
+        }
+        else
+        {
+            StaticData.tutorialIsActive = false;
+        }
+            SceneManager.LoadScene(sceneName);
     }
 
     public void TransitionToBattleScene()
@@ -41,7 +77,21 @@ public class SceneLoader : MonoBehaviour
 
         ToggleMainSceneObjects(true);
     }
-
+    public void ReturnToMainMenu()
+    {
+        if (tutorialScene != null && tutorialScene.isLoaded)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        else
+        {
+            Debug.LogWarning("Tutorial scene is not loaded or assigned.");
+        }
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
     private void ToggleMainSceneObjects(bool isActive)
     {
         if (mainScene == null)
@@ -61,6 +111,11 @@ public class SceneLoader : MonoBehaviour
         if (scene.name == "BattleScene")
         {
             battleScene = scene;
+        }
+        if (scene.name == "Tutorial")
+        {
+            StaticData.tutorialIsActive = true;
+            tutorialScene = scene;
         }
     }
 

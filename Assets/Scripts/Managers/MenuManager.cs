@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     public static MenuManager instance;
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject bookListPanel;
+    [SerializeField] private GameObject badgeListPanel;
     //[SerializeField] private GameObject itemListPanel;
     //[SerializeField] private GameObject questListPanel;
     //[SerializeField] private GameObject playerPanel;
@@ -58,10 +59,13 @@ public class MenuManager : MonoBehaviour
     {
         extendedPanelIsActive = true;
         bookListPanel.SetActive(true);
+        badgeListPanel.SetActive(false);
     }
     public void OnItemsPress()
     {
-        Debug.Log("Items is pressed");
+        extendedPanelIsActive = true;
+        bookListPanel.SetActive(false);
+        badgeListPanel.SetActive(true);
     }
     public void OnPlayerPress()
     {
@@ -77,5 +81,6 @@ public class MenuManager : MonoBehaviour
         menuPanel.SetActive(false);
         extendedPanelIsActive = false;
         bookListPanel.SetActive(false);
+        badgeListPanel.SetActive(false);
     }
 }

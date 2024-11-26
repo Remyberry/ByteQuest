@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button homeButton;
     [SerializeField] private Button saveButton;
+    public GameObject savepanel;
+    private Transform playerPosition;
+
     public bool pauseisActive { get; private set; }
 
     private void Awake()
@@ -30,6 +33,7 @@ public class UIManager : MonoBehaviour
     {
         pauseisActive = false;
         pauseOverlay.SetActive(false);
+        playerPosition = FindObjectOfType<Player>().transform;
     }
     void Update()
     {
@@ -61,9 +65,22 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+    public void OnSavePanelPress()
+    {
+        savepanel.SetActive(true);
+    }
     public void OnSavePress()
     {
-        Debug.Log("Code saving here");
+        GameSaveManager.Instance.playerPosition = playerPosition.position;
+        GameSaveManager.Instance.SaveGame();
+        Debug.Log(playerPosition.position);
     }
-
+    public void OnLoadPress()
+    {
+        GameSaveManager.Instance.LoadGame();
+    }
+    public void OnCancelPress()
+    {
+        savepanel.SetActive(false);
+    }
 }

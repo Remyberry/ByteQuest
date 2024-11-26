@@ -6,7 +6,6 @@ using UnityEngine;
 public class Enemy
 {
     public string enemyName;
-    public int health;
     public int attackSpeed;
     public int timeLimit;
     [Multiline]

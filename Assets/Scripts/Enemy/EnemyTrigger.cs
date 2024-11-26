@@ -10,8 +10,9 @@ public class EnemyTrigger : MonoBehaviour
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
     [SerializeField] private string sceneToLoad;
-
+    private Transform playerPosition;
     public Enemy enemy;
+    [SerializeField] public GameObject enemyBadge;
     private bool playerInRange;
 
     private void Awake()
@@ -23,6 +24,7 @@ public class EnemyTrigger : MonoBehaviour
     private void Start()
     {
         sceneController = FindObjectOfType<SceneLoader>();
+        playerPosition = FindObjectOfType<Player>().transform;
     }
 
     private void Update()
@@ -30,10 +32,11 @@ public class EnemyTrigger : MonoBehaviour
         if (playerInRange)
         {
             visualCue.SetActive(true);
+            
+            
             if (Input.GetKeyDown(KeyCode.I))
             {
                 string name = enemy.enemyName;
-                int health = enemy.health;
                 int attackSpeed = enemy.attackSpeed;
                 int timeLimit = enemy.timeLimit;
                 string requirement = enemy.requirement;
@@ -42,7 +45,6 @@ public class EnemyTrigger : MonoBehaviour
                 string correctCode = enemy.correctCode;
 
                 StaticData.enemyName = name;
-                StaticData.enemyHealth = health;
                 StaticData.enemyAttackSpeed = attackSpeed;
                 StaticData.enemyTimeLimit = timeLimit;
                 StaticData.enemyRequirement = requirement;
@@ -53,8 +55,30 @@ public class EnemyTrigger : MonoBehaviour
                 SpriteRenderer parentSpriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
                 StaticData.enemysprite = parentSpriteRenderer.sprite;
 
-                sceneController.TransitionToBattleScene();
-                //SceneManager.LoadScene(sceneToLoad);
+                //sceneController.TransitionToBattleScene();
+                if (!StaticData.tutorialIsActive)
+                {
+                    GameSaveManager.Instance.playerPosition = playerPosition.position;
+                    GameSaveManager.Instance.SaveGame();
+                    SceneManager.LoadScene(sceneToLoad);
+                }
+                else {
+                    SceneManager.LoadScene(sceneToLoad);
+                }
+                
+            }
+
+            //Check if player is victorious in last fight
+            if (string.IsNullOrEmpty(StaticData.enemyName))             
+            {
+                return;
+            }
+            else
+            {
+                if ((enemyBadge != null) && StaticData.bestTime.ContainsKey(StaticData.enemyName))
+                {
+                    enemyBadge.SetActive(true);
+                }
             }
         }
         else

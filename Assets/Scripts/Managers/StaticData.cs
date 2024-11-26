@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class StaticData : MonoBehaviour
 {
+    //PLAYER VECTOR
+    public static Transform playerPosition;
+
     //NPC DATA HOLDER
     public static string npcName;
     public static int npcHealth;
@@ -13,7 +16,6 @@ public class StaticData : MonoBehaviour
 
     //ENEMY DATA HOLDER
     public static string enemyName;
-    public static int enemyHealth;
     public static int enemyAttackSpeed;
     public static int enemyTimeLimit;
     public static string enemyRequirement;
@@ -21,14 +23,18 @@ public class StaticData : MonoBehaviour
     public static string enemyCodeTemplate;
     public static string enemyCorrectCode;
     public static Sprite enemysprite;
+    public static GameObject enemyBadge;
     public static AnimationClip characterAnimation;
-
     public static Dictionary<string, string> bestTime = new Dictionary<string, string>();
+
+    //BADGE DATA HOLDER
+    public static string badgeName;
+    public static string badgeDescription;
 
     //BOOK DATA HOLDER
     public static string bookTitle;
     public static string bookContent;
 
     //STATUS FLAGS
-    public static bool doorOneOpened;
+    public static bool tutorialIsActive;
 }

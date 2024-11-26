@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 3123394580736034291}
   - component: {fileID: 3019775966820799851}
   - component: {fileID: 7213901134065149169}
-  - component: {fileID: 5461688847339283985}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -178,22 +177,9 @@ MonoBehaviour:
   npc:
     name: 
     objectsHolding: []
+  bookItem: {fileID: 0}
   visualCue: {fileID: 535347349963409344}
   inkJSON: {fileID: 4900000, guid: 9a82330f05f4fe74a9c291737884bb1c, type: 3}
---- !u!114 &5461688847339283985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664221300509239753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d12d332ef6f2c0d48b8df089fceff71c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messages: []
-  actors: []
 --- !u!1 &8064551265342722539
 GameObject:
   m_ObjectHideFlags: 0

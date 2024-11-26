@@ -28,7 +28,7 @@ public class BookManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogWarning("Found more than one menu manager in the scene");
+            Debug.LogWarning("Found more than one book manager in the scene");
         }
         instance = this;
     }
@@ -103,7 +103,7 @@ public class BookManager : MonoBehaviour
             Debug.Log(book.title);
             index++;
         }
-        Debug.Log(index);
+        Debug.Log(inventory.Container.Count);
 
         //books[0].gameObject.GetComponent<Button>().Select();
         //set ramaining UI choices inactive

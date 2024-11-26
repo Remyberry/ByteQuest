@@ -58,7 +58,7 @@ TagManager:
   - name: Objects
     uniqueID: 3736928993
     locked: 0
-  - name: Wall Collisions
+  - name: Blockers
     uniqueID: 1271298623
     locked: 0
   - name: Characters

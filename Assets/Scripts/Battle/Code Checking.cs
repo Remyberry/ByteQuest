@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class CodeChecking : MonoBehaviour
 {
@@ -21,24 +23,20 @@ public class CodeChecking : MonoBehaviour
 
     public GameObject codeCheckPanel;
     public TextMeshProUGUI resultTextUI;
-
     public GameObject winPanel;
     public GameObject losePanel;
 
     public TMP_InputField inputField;
     public TextMeshProUGUI correctCode;
-
     public TextMeshProUGUI timerUI;
+
     private int startTime;
-    private float timeRemaining, timeSpent;
+    private float timeRemaining, timeSpent, attackInterval, attackTimer;
     private string enemyName, reqTitle, reqDesc, timeUI;
     public Sprite enemySpriteB;
-
     public GameObject pauseMenuPanel;
 
-    private bool panelIsActive, pausepanelIsActive, codeCheckPanelIsActive, timerRunning;
-
-    
+    private bool instructionPanelIsActive, pausepanelIsActive, codeCheckPanelIsActive, timerRunning;
 
 
     private void Start()
@@ -47,7 +45,7 @@ public class CodeChecking : MonoBehaviour
         SpriteRenderer spriteRenderer = enemyObject.GetComponent<SpriteRenderer>();
 
         instructionPanel.SetActive(true);
-        panelIsActive = true;
+        instructionPanelIsActive = true;
 
         codeCheckPanelIsActive = false;
         codeCheckPanel.SetActive(false);
@@ -65,7 +63,7 @@ public class CodeChecking : MonoBehaviour
         requirementTitleUI.SetText(reqTitle);
         reqDesc = StaticData.enemyRequirementDescription;
         requirementDescUI.SetText(reqDesc);
-
+        attackInterval = StaticData.enemyAttackSpeed;
         timeUI = StaticData.enemyTimeLimit.ToString();  
         timerUI.SetText(timeUI);
 
@@ -90,6 +88,9 @@ public class CodeChecking : MonoBehaviour
 
         string enemySourceCodeData = StaticData.enemyCorrectCode;
         correctCode.SetText(enemySourceCodeData);
+
+        //initialize hp code
+
         //correctCode.enabled = false;
     }
     private void Update()
@@ -102,7 +103,14 @@ public class CodeChecking : MonoBehaviour
                 timeRemaining -= Time.deltaTime;
                 timerUI.text = Mathf.FloorToInt(timeRemaining).ToString();
                 timeSpent += Time.deltaTime;
-                //Debug.Log(Mathf.FloorToInt(timeSpent).ToString());
+
+                attackTimer -= Time.deltaTime;
+
+                if (attackTimer <= 0f)
+                {
+                    EnemyAttack();
+                    attackTimer = attackInterval;
+                }
             }
             else
             {
@@ -114,46 +122,28 @@ public class CodeChecking : MonoBehaviour
                 losePanel.SetActive(true);
             }
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && panelIsActive) {
+        if (Input.GetKeyDown(KeyCode.Escape) && instructionPanelIsActive) {        //Close instruction panel and start timer
             instructionPanel.SetActive(false);
-            panelIsActive = false;
+            instructionPanelIsActive = false;
             timerRunning = true;
+            inputField.Select();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && !pausepanelIsActive && !panelIsActive && codeCheckPanelIsActive)
+        else if (Input.GetKeyDown(KeyCode.Escape) && !pausepanelIsActive && !instructionPanelIsActive && codeCheckPanelIsActive) //Close checking panel and resume timer
         {
             codeCheckPanel.SetActive(false);
             codeCheckPanelIsActive = false;
             resultTextUI.text = string.Empty;
             timerRunning = true;
+            inputField.Select();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && !pausepanelIsActive && !panelIsActive)
+        else if (Input.GetKeyDown(KeyCode.Escape) && !pausepanelIsActive && !instructionPanelIsActive)      //Open pause and stop timer
         {
             timerRunning = false;
-            pauseMenuPanel.SetActive(true);
+            pauseMenuPanel.SetActive(true);   
             pausepanelIsActive = true;
+            inputField.Select();
         }
     }
-    //private IEnumerable<string> EnumerateLines(TMP_Text text)
-    //{
-    //    var textInfo = text.GetTextInfo(text.text);
-    //    for (int i = 0; i < textInfo.lineCount; i++)
-    //    {
-    //        TMP_LineInfo lineInfo = textInfo.lineInfo[i];
-    //        int startIndex = lineInfo.firstCharacterIndex;
-    //        int length = lineInfo.characterCount;
-    //        // Ensure the substring is within the bounds of the text
-    //        if (startIndex + length <= text.text.Length)
-    //        {
-    //            yield return text.text.Substring(startIndex, length);
-    //        }
-    //        else
-    //        {
-    //            // Handle the out-of-bounds case, e.g., log a warning or return an empty string
-    //            Debug.LogWarning("Invalid line information: " + i);
-    //            yield return string.Empty;
-    //        }
-    //    }
-    //}
     public void compareCode()
     {
         // Start the comparison coroutine
@@ -163,7 +153,6 @@ public class CodeChecking : MonoBehaviour
 
         string fullInputText = inputField.text;
         string fullCodeText = correctCode.text;
-
         string[] linesI = fullInputText.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
         string[] linesC = fullCodeText.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -196,21 +185,27 @@ public class CodeChecking : MonoBehaviour
             if (!userInputLines[i].Equals(correctLines[i], StringComparison.OrdinalIgnoreCase))
             {
                 isCorrect.Add(false);
-                if (i == 0) 
-                {
-                    resultTextUI.text += "Line (" + (i + 1) + ") is incorrect : " + userInputLines[i];
-                }
-                resultTextUI.text += "\nLine (" + (i+1) + ") is incorrect : " + userInputLines[i];
+                //if (i == 0)
+                //{
+                    resultTextUI.text += "Line (" + (i + 1) + ") is incorrect : " + userInputLines[i] + "\n";
+                //}
+                //else {
+                //    resultTextUI.text += "\nLine (" + (i + 1) + ") is incorrect : " + userInputLines[i];
+                //}
                 yield break;
             }
             else
             {
                 isCorrect.Add(true);
-                if (i == 0)
-                {
-                    resultTextUI.text += "Line (" + (i + 1) + ") is correct";
-                }
-                resultTextUI.text += "\nLine (" + (i + 1) + ") is correct";
+                //if (i == 0)
+                //{
+                    resultTextUI.text += "Line (" + (i + 1) + ") is correct\n";
+                //}
+                //else
+                //{
+                //    resultTextUI.text += "\nLine (" + (i + 1) + ") is correct";
+                //}
+                
             }
             yield return new WaitForSeconds(0.5f);
         }
@@ -219,6 +214,7 @@ public class CodeChecking : MonoBehaviour
         if (isCorrect.All(x => x))
         {
             winPanel.SetActive(true);
+
             if (StaticData.bestTime.ContainsKey(enemyName))
             {
                 if (Mathf.FloorToInt(timeSpent) < int.Parse(StaticData.bestTime[enemyName]))
@@ -237,6 +233,19 @@ public class CodeChecking : MonoBehaviour
             Debug.Log("Code is incorrect.");
         }
     }
+    public void EnemyAttack()
+    {
+        string[] lines = inputField.text.Split('\n');
+
+        if (lines.Length > 1)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, lines.Length); // Pick a random line index
+            lines[randomIndex] = ""; 
+
+            inputField.text = string.Join("\n", lines); // Reconstruct the text
+        }
+    }
+    
     public void OnCheckButtonPressed() {
         if (!codeCheckPanelIsActive)
         {
@@ -244,7 +253,6 @@ public class CodeChecking : MonoBehaviour
             codeCheckPanelIsActive = true;
             codeCheckPanel.SetActive(true);
             Invoke("compareCode", 1.0f);
-            //compareCode();
         }
     }
     public void OnResetCodePressed()
@@ -254,13 +262,13 @@ public class CodeChecking : MonoBehaviour
     }
     public void OnShowInstructionPressed()
     {
-        if (!panelIsActive) {
+        if (!instructionPanelIsActive) {
             instructionPanel.SetActive(true);
-            panelIsActive = true;
+            instructionPanelIsActive = true;
         }
         else { 
             instructionPanel.SetActive(false);
-            panelIsActive = false;
+            instructionPanelIsActive = false;
         }
     }
     public void OnMenuPressed()
@@ -291,18 +299,34 @@ public class CodeChecking : MonoBehaviour
     }
     public void OnRetryPressed()
     {
-        SceneManager.UnloadSceneAsync("BattleScene");
-        sceneController.TransitionToBattleScene();
+        SceneManager.LoadScene("BattleScene");
+        //sceneController.TransitionToBattleScene();
     }
     public void OnReturnPressed()
     {
-        sceneController.ReturnToMainScene();
+        //SceneManager.UnloadSceneAsync("BattleScene");
+        if (StaticData.tutorialIsActive)
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
+        else { SceneManager.LoadScene("TestScene"); }
+        
+        //sceneController.ReturnToMainScene();
     }
     public void OnHomePressed()
     {
         if (pausepanelIsActive)
         {
-            sceneController.ReturnToMainScene();
+            Debug.Log(StaticData.tutorialIsActive);
+            if (StaticData.tutorialIsActive)
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+            else {
+                SceneManager.LoadScene("TestScene"); 
+            }
+            //SceneManager.UnloadSceneAsync("BattleScene");
+            //sceneController.ReturnToMainScene();
         }
     }
 }

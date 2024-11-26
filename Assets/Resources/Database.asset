@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4d277312a955d45bc7a5b1e90727df, type: 3}
   m_Name: Database
   m_EditorClassIdentifier: 
-  Items:
+  Books:
   - {fileID: 11400000, guid: b69795170db637048a7070b5770489ee, type: 2}
   - {fileID: 11400000, guid: e5459bf474c341f41a54d11ee954f790, type: 2}
   - {fileID: 11400000, guid: 76cbfe4b94efb594eb103ab6c1b3d04f, type: 2}
@@ -21,3 +21,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ecdc1485172c748449fce3e4f8d47128, type: 2}
   - {fileID: 11400000, guid: 53a8302d75d07724691717dda6acd7c0, type: 2}
   - {fileID: 11400000, guid: cd1b00cc147813b41b26680d69df51fe, type: 2}
+  Badges:
+  - {fileID: 11400000, guid: 6b1e54ede2df9874c99de0a8fc9986e1, type: 2}
