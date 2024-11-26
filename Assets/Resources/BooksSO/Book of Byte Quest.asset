@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a2941eca88cf545ac5c38357f05691, type: 3}
+  m_Name: Book of Byte Quest
+  m_EditorClassIdentifier: 
+  gameobject: {fileID: 1374632221013086044, guid: def13125fa06bdd469ca4a99cac7cf4f, type: 3}
+  type: 1
+  description: Take this with you
+  title: Book of Byte Quest
+  content: 'Learning Assembly
+
+
+
+    { If you have any comments or questions regarding
+    this tutorial, please E-mail me }
+
+
+
+    While learning ASM, i found many tutorials
+    to be very confusing, and did not cover assembly in the detail that''s necessary
+    for such a complicated programming language as this one. So, I write this rudementary
+    tutorial in order to ease the pain others may have learning ASM.
+
+    The problem
+    with most beginner level tutorials is that they assume the reader has previous
+    programming knowledge in one language or another. While i''ll make comments that
+    draw connections between programming in BASIC and ASM, i hope to write this is
+    such a way that you can skip these remarks without affecting your learning, therefore
+    making this a completely newbie-level tutorial.
+
+    I am also very much a beginner,
+    so I have recent memory of learning alot of the stuff i''m gonna cover.
+
+
+
+    First
+    off, i beleive it very difficult to learn programming without programming as
+    you learn. So, i suggest you have a copy of TASM, a necessary utility for writing
+    assembly programs.
+
+
+
+    Also before you start, it''s imperative you understand
+    about Hexedecimal + binary.'

@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - NPC
+  - Enemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - Solids
+  - Objects
+  - Blockers
+  - Characters
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 3242553035
+    locked: 0
+  - name: FG
+    uniqueID: 600268917
+    locked: 0
+  - name: Floor
+    uniqueID: 1853544415
+    locked: 0
+  - name: Player
+    uniqueID: 127347203
+    locked: 0
+  - name: Objects
+    uniqueID: 3736928993
+    locked: 0
+  - name: Blockers
+    uniqueID: 1271298623
+    locked: 0
+  - name: Characters
+    uniqueID: 1009044633
+    locked: 0
