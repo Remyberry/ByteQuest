@@ -4,8 +4,7 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEditor;
-using Unity.VisualScripting;
-using static UnityEditor.Progress;
+
 
 [CreateAssetMenu(fileName = "InventorySO", menuName = "ScriptableObjects/InventorySO")]
 public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver

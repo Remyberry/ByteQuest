@@ -7,20 +7,22 @@ Hey, you. You're finally awake!
 === main ===
 What brings you here?
 + [Where am I?]
-    Welcome to Bytla!
-    You'll probably end up with severe brain damage here
-    This is a dungeon with numerous underground levels.
-    Each levels are surrounded by enemies and a Boss.
-    You'll have to fight them to proceed downwards.
+    Welcome to Bytes' Dungeon!
+    You've probably ended up here because the LORD TASM is sad.
+    Maybe because he's hard to deal with...
+    Anyway
+    This is a dungeon with numerous blocks of areas.
+    Each areas are surrounded by enemies and a boss.
+    You'll have to fight them if you want to get acknowledged and obtain a badge.
     ->ask
 + [Who are you?]
     youknowhowloongivebeenwaitingforthis?
     hooimboutamakeanameformyselfyeah.
     mynamesjeff
     ->ask
-+ [Help me]
-    i'll sho u da wei
-    {bookName == "": -> giveBook("Book of Byte Quest") | -> gotBook}
++ [Help]
+    Take this with you...
+    {bookName == "": -> giveBook("Book of The First Byte") | -> gotBook}
     
 
 === giveBook(book) ===
@@ -34,7 +36,6 @@ Do you need anything else?
 + [Yes]
     ->main
 + [No]
-    ogge
     -> END
 
 === gotBook ===
