@@ -2588,12 +2588,12 @@ GameObject:
   - component: {fileID: 686886486}
   - component: {fileID: 686886481}
   - component: {fileID: 686886487}
-  m_Layer: 0
-  m_Name: PlayerSprite
+  m_Layer: 13
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!61 &686886481
 BoxCollider2D:
@@ -2631,7 +2631,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.14, y: 0.2}
+    oldSize: {x: 0.16, y: 0.16}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2681,9 +2681,9 @@ SpriteRenderer:
   m_SortingLayerID: 127347203
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1055882273, guid: a66925c402bdac444bee0b46ccd155c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 98c0504798790e149aaa71ebca2c40ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 0.16}
@@ -2753,7 +2753,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 065ba519090bd294a9d530d10ccb749d, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.4
   m_Pitch: 1
   Loop: 1

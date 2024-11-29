@@ -7,9 +7,6 @@ public class StaticData : MonoBehaviour
     //PLAYER VECTOR
     public static Transform playerPosition;
 
-    //AUDIO HANDLER
-    public static bool isMuted { get; set; }
-
     //NPC DATA HOLDER
     public static string npcName;
     public static int npcHealth;
@@ -40,41 +37,4 @@ public class StaticData : MonoBehaviour
 
     //STATUS FLAGS
     public static bool tutorialIsActive;
-    public static StaticData Instance { get; private set; }
-
-    private void Awake()
-    {
-        isMuted = false;
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        AudioSource[] audiosources = FindObjectsOfType<AudioSource>();
-        
-        foreach (AudioSource audiosource in audiosources)
-        {
-            if (isMuted)
-            {
-                break;
-            }
-            audiosource.Play();
-        }
-        
-    }
-    public static void muteUnmute()
-    {
-        isMuted = !isMuted;
-
-        AudioSource[] audiosources = FindObjectsOfType<AudioSource>();
-        foreach (AudioSource audiosource in audiosources)
-        {
-            audiosource.mute = isMuted;
-
-        }
-    }
 }
