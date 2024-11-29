@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class CodeChecking : MonoBehaviour
 {
@@ -304,7 +307,7 @@ public class CodeChecking : MonoBehaviour
         //SceneManager.UnloadSceneAsync("BattleScene");
         if (StaticData.tutorialIsActive)
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("Tutorial");
         }
         else { SceneManager.LoadScene("TestScene"); }
         

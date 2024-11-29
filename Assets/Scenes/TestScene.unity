@@ -2068,17 +2068,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 263d597348123864ea1d60ef227db178, type: 3}
     - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
-      propertyPath: inkJSON
-      value: 
-      objectReference: {fileID: 4900000, guid: b467f5975fd226f4aab41506d4396e5d, type: 3}
-    - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
       propertyPath: bookItem
       value: 
       objectReference: {fileID: 1007666783}
-    - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
-      propertyPath: npc.name
-      value: Marduk
-      objectReference: {fileID: 0}
     - target: {fileID: 8064551265342722539, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
       propertyPath: m_Name
       value: npc
@@ -3370,17 +3362,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: d9a5c65328e18a049bc469b1e46a2372, type: 3}
     - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
-      propertyPath: inkJSON
-      value: 
-      objectReference: {fileID: 4900000, guid: b467f5975fd226f4aab41506d4396e5d, type: 3}
-    - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
       propertyPath: bookItem
       value: 
       objectReference: {fileID: 664281169}
-    - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
-      propertyPath: npc.name
-      value: Jubal
-      objectReference: {fileID: 0}
     - target: {fileID: 8064551265342722539, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
       propertyPath: m_Name
       value: npc (4)
@@ -4021,7 +4005,6 @@ GameObject:
   - component: {fileID: 686886487}
   - component: {fileID: 686886488}
   - component: {fileID: 686886489}
-  - component: {fileID: 686886490}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -4311,102 +4294,6 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 686886480}
---- !u!82 &686886490
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686886480}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e58e7365b30f58a4595ad7d2ff0f3db9, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.3
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &692343438
 GameObject:
   m_ObjectHideFlags: 0
@@ -220684,17 +220571,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: bf5c1385b0d20074b933a47e9cc6a3a2, type: 3}
     - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
-      propertyPath: inkJSON
-      value: 
-      objectReference: {fileID: 4900000, guid: b467f5975fd226f4aab41506d4396e5d, type: 3}
-    - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
       propertyPath: bookItem
       value: 
       objectReference: {fileID: 1888314278}
-    - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
-      propertyPath: npc.name
-      value: Olaf
-      objectReference: {fileID: 0}
     - target: {fileID: 8064551265342722539, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
       propertyPath: m_Name
       value: npc (3)
@@ -221865,17 +221744,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 82753b8d5c172d345a6856cfb24334fa, type: 3}
     - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
-      propertyPath: inkJSON
-      value: 
-      objectReference: {fileID: 4900000, guid: b467f5975fd226f4aab41506d4396e5d, type: 3}
-    - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
       propertyPath: bookItem
       value: 
       objectReference: {fileID: 660270962}
-    - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
-      propertyPath: npc.name
-      value: Marie
-      objectReference: {fileID: 0}
     - target: {fileID: 8064551265342722539, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
       propertyPath: m_Name
       value: npc (5)
@@ -221945,17 +221816,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: bd3116483ac3184409b5dace04678956, type: 3}
     - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
-      propertyPath: inkJSON
-      value: 
-      objectReference: {fileID: 4900000, guid: b467f5975fd226f4aab41506d4396e5d, type: 3}
-    - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
       propertyPath: bookItem
       value: 
       objectReference: {fileID: 553542794}
-    - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
-      propertyPath: npc.name
-      value: Bhurger
-      objectReference: {fileID: 0}
     - target: {fileID: 8064551265342722539, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
       propertyPath: m_Name
       value: npc (1)
@@ -235520,17 +235383,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 51a864f3c93806c42b1f9b83686bed69, type: 3}
     - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
-      propertyPath: inkJSON
-      value: 
-      objectReference: {fileID: 4900000, guid: b467f5975fd226f4aab41506d4396e5d, type: 3}
-    - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
       propertyPath: bookItem
       value: 
       objectReference: {fileID: 569361085}
-    - target: {fileID: 7213901134065149169, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
-      propertyPath: npc.name
-      value: Muhammad
-      objectReference: {fileID: 0}
     - target: {fileID: 8064551265342722539, guid: 319df1e615bb2924eb9ad5ce35f1b35f, type: 3}
       propertyPath: m_Name
       value: npc (2)

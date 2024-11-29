@@ -44,7 +44,7 @@ public class MenuManager : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.BackQuote))
         {
             menuIsActive = true;
             menuPanel.SetActive(true);
