@@ -4,11 +4,7 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEditor;
-<<<<<<< Updated upstream
-
-=======
 using Unity.VisualScripting;
->>>>>>> Stashed changes
 
 [CreateAssetMenu(fileName = "InventorySO", menuName = "ScriptableObjects/InventorySO")]
 public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver

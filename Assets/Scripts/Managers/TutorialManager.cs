@@ -56,7 +56,5 @@ public class TutorialManager : MonoBehaviour
                 Destroy(tutorial);
             }
         }
-        
     }
-
 }

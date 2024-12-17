@@ -39,6 +39,16 @@ public class GameSaveManager : MonoBehaviour
         LoadGame();
     }
 
+    //void Start()
+    //{
+    //    Debug.Log(StaticData.tutorialIsActive);
+    //    if (StaticData.tutorialIsActive)
+    //    {
+    //        playerPosition = new Vector3(0, 0, 0);
+    //        Debug.Log("");
+    //    }
+    //    else { LoadGame(); }
+    //}
     public void SaveGame()
     {
         BinaryFormatter bf = new BinaryFormatter();

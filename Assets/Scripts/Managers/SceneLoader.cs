@@ -33,7 +33,7 @@ public class SceneLoader : MonoBehaviour
 
         GameObject player = GameObject.Find("Player"); // Replace "Player" with your player's name
 
-        if (player != null)
+        if (player != null && !StaticData.tutorialIsActive)
         {
             player.transform.position = GameSaveManager.Instance.playerPosition;
         }
@@ -52,7 +52,7 @@ public class SceneLoader : MonoBehaviour
         {
             StaticData.tutorialIsActive = false;
         }
-            SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
     public void TransitionToBattleScene()

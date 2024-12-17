@@ -7,11 +7,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-<<<<<<< Updated upstream
-
-=======
 using UnityEngine.UI;
->>>>>>> Stashed changes
 public class CodeChecking : MonoBehaviour
 {
     private SceneLoader sceneController;
@@ -385,6 +381,7 @@ public class CodeChecking : MonoBehaviour
         if (StaticData.tutorialIsActive)
         {
             SceneManager.LoadScene("MainMenu");
+            StaticData.tutorialIsActive = false;
         }
         else { SceneManager.LoadScene("TestScene"); }
         
@@ -398,6 +395,7 @@ public class CodeChecking : MonoBehaviour
             if (StaticData.tutorialIsActive)
             {
                 SceneManager.LoadScene("MainMenu");
+                StaticData.tutorialIsActive = false;
             }
             else {
                 SceneManager.LoadScene("TestScene"); 
