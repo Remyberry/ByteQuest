@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StaticData : MonoBehaviour
 {
-    //PLAYER VECTOR
+    //PLAYER
     public static Transform playerPosition;
 
     //NPC DATA HOLDER
@@ -37,4 +37,5 @@ public class StaticData : MonoBehaviour
 
     //STATUS FLAGS
     public static bool tutorialIsActive;
+    public static bool isLoggedIn;
 }

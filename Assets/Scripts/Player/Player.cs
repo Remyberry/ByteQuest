@@ -51,6 +51,8 @@ public class Player : MonoBehaviour
     {
         inventory.Container.Clear();
         inventory.BadgeContainer.Clear();
+        inventory.Container.Clear();
+        inventory.BadgeContainer.Clear();
     }
 
     public void Update()

@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33a2941eca88cf545ac5c38357f05691, type: 3}
-  m_Name: book6
+  m_Name: '[L6]Stack Operations and Subroutines'
   m_EditorClassIdentifier: 
   gameobject: {fileID: 6513103931919214799, guid: 106828c002e9b024b9526a4e56c6e5d4, type: 3}
-  type: 1
-  description: 
-  title: Stack Operations and Subroutines
+  type: 0
+  title: '[L6]Stack Operations and Subroutines'
   content: "Lesson 6: Stack Operations and Subroutines\r\nObjective: Set up and use
     basic subroutines and understand stack management.\r\nInstructions Covered:\r\nCALL:
     Call a subroutine (another block of code).\r\nRET: Return from a subroutine.\r\n\r\nCALL

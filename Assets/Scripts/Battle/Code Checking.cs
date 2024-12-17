@@ -1,3 +1,5 @@
+using PlayFab.ClientModels;
+using PlayFab;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +7,11 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+<<<<<<< Updated upstream
 
+=======
+using UnityEngine.UI;
+>>>>>>> Stashed changes
 public class CodeChecking : MonoBehaviour
 {
     private SceneLoader sceneController;
@@ -68,17 +74,22 @@ public class CodeChecking : MonoBehaviour
         timeRemaining = startTime;
         timeSpent = startTime - timeRemaining;
 
-        if (StaticData.bestTime.ContainsKey(enemyName))
+        LoadBestTime(() =>
         {
-            //display shortest time spent (best record)
-            enemyNameUI.SetText(enemyName);
-            enemyBestTimeUI.SetText("Best Time: " + StaticData.bestTime[enemyName]);
-        }
-        else
-        {
-            enemyNameUI.SetText(enemyName);
-            enemyBestTimeUI.SetText("Best Time: " + timeRemaining.ToString());
-        }
+            if (StaticData.bestTime.ContainsKey(enemyName))
+            {
+                //display shortest time spent (best record)
+                enemyNameUI.SetText(enemyName);
+                enemyBestTimeUI.SetText("Best Time: " + StaticData.bestTime[enemyName]);
+            }
+            else
+            {
+                enemyNameUI.SetText(enemyName);
+                enemyBestTimeUI.SetText("Best Time: " + timeRemaining.ToString());
+            }
+        });
+
+        
 
         string template = StaticData.enemyCodeTemplate;
         inputField.text = template;
@@ -214,16 +225,20 @@ public class CodeChecking : MonoBehaviour
 
             if (StaticData.bestTime.ContainsKey(enemyName))
             {
-                if (Mathf.FloorToInt(timeSpent) < int.Parse(StaticData.bestTime[enemyName]))
+                if (Mathf.FloorToInt(timeSpent) < int.Parse(StaticData.bestTime[enemyName]))        //Check if current time spent is less than best time
                 {
-                    StaticData.bestTime[enemyName] = Mathf.FloorToInt(timeSpent).ToString();
+                    StaticData.bestTime[enemyName] = Mathf.FloorToInt(timeSpent).ToString();        
                 }
             }
             else
             {
                 StaticData.bestTime.Add(enemyName, Mathf.FloorToInt(timeSpent).ToString());       //Add new record to dictionary
                 Debug.Log("New Record meega!");
+                SaveBestTime();
             }
+            //string bestTimeJson = JsonUtility.ToJson(new SerializableDictionary<string, string>(StaticData.bestTime));
+            //string bestTimeJson = JsonUtility.ToJson(StaticData.bestTime);
+            
         }
         else
         {
@@ -242,7 +257,72 @@ public class CodeChecking : MonoBehaviour
             inputField.text = string.Join("\n", lines); // Reconstruct the text
         }
     }
-    
+
+    public void SaveBestTime()
+    {
+        string bestTimeJson = JsonUtility.ToJson(new SerializableDictionary<string, string>(StaticData.bestTime));
+        var request = new UpdateUserDataRequest
+        {
+            Data = new Dictionary<string, string>
+        {
+            { "PlayerBestTime", bestTimeJson }
+        }
+        };
+        PlayFabClientAPI.UpdateUserData(request, OnDataSaved, OnError);
+    }
+
+    private void OnDataSaved(UpdateUserDataResult result)
+    {
+        Debug.Log("Best time data successfully saved to PlayFab.");
+    }
+
+    private void OnError(PlayFabError error)
+    {
+        Debug.LogError("Error saving data to PlayFab: " + error.GenerateErrorReport());
+    }
+
+    public void LoadBestTime(Action onLoadComplete = null)
+    {
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest(), result =>
+        {
+            if (result.Data != null && result.Data.ContainsKey("PlayerBestTime"))
+            {
+                string bestTimeJson = result.Data["PlayerBestTime"].Value;
+                SerializableDictionary<string, string> deserializedBestTime =
+                    JsonUtility.FromJson<SerializableDictionary<string, string>>(bestTimeJson);
+
+                StaticData.bestTime = deserializedBestTime.ToDictionary();
+                Debug.Log("Best time data successfully loaded from PlayFab.");
+            }
+            else
+            {
+                Debug.Log("No best time data found in PlayFab.");
+            }
+
+            onLoadComplete?.Invoke(); // Call the callback once the data is loaded
+        },
+    error =>
+    {
+        Debug.LogError("Error loading data from PlayFab: " + error.GenerateErrorReport());
+        onLoadComplete?.Invoke(); // Still call the callback to avoid blocking
+    });
+        //PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnDataLoaded, OnError);
+    }
+
+    private void OnDataLoaded(GetUserDataResult result)
+    {
+        if (result.Data != null && result.Data.ContainsKey("PlayerBestTime"))
+        {
+            string bestTimeJson = result.Data["PlayerBestTime"].Value;
+            SerializableDictionary<string, string> deserializedBestTime =
+                JsonUtility.FromJson<SerializableDictionary<string, string>>(bestTimeJson);
+
+            StaticData.bestTime = deserializedBestTime.ToDictionary();
+            Debug.Log("Best time data successfully loaded from PlayFab.");
+        }
+    }
+
+
     public void OnCheckButtonPressed() {
         if (!codeCheckPanelIsActive)
         {
@@ -325,5 +405,30 @@ public class CodeChecking : MonoBehaviour
             //SceneManager.UnloadSceneAsync("BattleScene");
             //sceneController.ReturnToMainScene();
         }
+    }
+}
+[System.Serializable]
+public class SerializableDictionary<TKey, TValue>
+{
+    public List<TKey> keys = new List<TKey>();
+    public List<TValue> values = new List<TValue>();
+
+    public SerializableDictionary(Dictionary<TKey, TValue> dictionary)
+    {
+        foreach (var kvp in dictionary)     //key value pair
+        {
+            keys.Add(kvp.Key);
+            values.Add(kvp.Value);
+        }
+    }
+
+    public Dictionary<TKey, TValue> ToDictionary()
+    {
+        var dictionary = new Dictionary<TKey, TValue>();
+        for (int i = 0; i < keys.Count; i++)
+        {
+            dictionary[keys[i]] = values[i];
+        }
+        return dictionary;
     }
 }

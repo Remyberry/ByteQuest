@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33a2941eca88cf545ac5c38357f05691, type: 3}
-  m_Name: book4
+  m_Name: '[L4]Conditional Jumps'
   m_EditorClassIdentifier: 
   gameobject: {fileID: 4965884521887502849, guid: e524b05b9aa573e4b96667fce87aea83, type: 3}
-  type: 1
-  description: 
-  title: Conditional Jumps
+  type: 0
+  title: '[L4]Conditional Jumps'
   content: 'Lesson 4: Conditional Jumps
 
     Objective: Introduce the concept of

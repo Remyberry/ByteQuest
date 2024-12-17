@@ -14,9 +14,8 @@ public class BadgeManager : MonoBehaviour
     [Header("Badge View UI")]
     public GameObject badgeViewPanel;
     public TextMeshProUGUI badgeDescription;
-   
     Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
-
+    private Badge badgeSO;
     public bool badgeViewIsActive { get; private set; }
 
     private void Awake()
@@ -85,7 +84,7 @@ public class BadgeManager : MonoBehaviour
         for (int i = index; i < inventory.BadgeContainer.Count; i++)
         {
             Badge badgeSO = (Badge)inventory.BadgeContainer[i].item;
-            badgeText[i].text = badgeSO.badgeDescription;
+            badgeText[i].text = badgeSO.badgeName;
             badges[i].gameObject.SetActive(true);
             itemsDisplayed.Add(inventory.BadgeContainer[i], badgeSO.gameobject);
             index++;

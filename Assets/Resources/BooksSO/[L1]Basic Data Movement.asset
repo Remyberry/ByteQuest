@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a2941eca88cf545ac5c38357f05691, type: 3}
+  m_Name: '[L1]Basic Data Movement'
+  m_EditorClassIdentifier: 
+  gameobject: {fileID: 3989569083738938918, guid: 654f8fccbc4a29d4f8c018f825e8bd7e, type: 3}
+  type: 0
+  title: '[L1]Basic Data Movement'
+  content: "Lesson 1: Basic Data Movement\n Objective: Understand how to transfer
+    data between registers, memory, and the stack.\n Instructions Covered:\n\n MOV:
+    Moves data between registers or between memory and registers.\n MOV AX, BX ;
+    AX gets the value in BX\n MOV AL, 5 ; AL gets the value 5\n\n PUSH and POP: Push
+    data onto the stack and pop it back.\n PUSH AX ; Saves AX on the stack\n POP
+    AX ; Retrieves the last value pushed into AX\n\n Exercise Application: You'll
+    use MOV to set values in registers and PUSH/POP for managing values on the stack
+    in Exercise 3 (Stack Spider)."

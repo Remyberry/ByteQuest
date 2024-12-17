@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33a2941eca88cf545ac5c38357f05691, type: 3}
-  m_Name: book3
+  m_Name: '[L3]Hexadecimal Arithmetic and Bitwise Operations'
   m_EditorClassIdentifier: 
   gameobject: {fileID: 6904908503624761451, guid: a2e4125cd22df2b4c93bf6b89ee01fd2, type: 3}
-  type: 1
-  description: 
-  title: Hexadecimal Arithmetic and Bitwise Operations
+  type: 0
+  title: '[L3]Hexadecimal Arithmetic and Bitwise Operations'
   content: "Lesson 3: Hexadecimal Arithmetic and Bitwise Operations\r\nObjective:
     Learn to use hexadecimal values and perform bitwise operations.\n\r\nInstructions
     Covered:\r\nHexadecimal Values: Use 0x prefix to specify hex values, or just

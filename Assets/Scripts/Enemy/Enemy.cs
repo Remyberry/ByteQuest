@@ -16,4 +16,16 @@ public class Enemy
     public string codeTemplate;
     [Multiline]
     public string correctCode;
+
+    public Enemy(string enemyName, int attackSpeed, int timeLimit, string requirement, string requirementDescription, string codeTemplate, string correctCode)
+    {
+        this.enemyName = enemyName;
+        this.attackSpeed = attackSpeed;
+        this.timeLimit = timeLimit;
+        this.requirement = requirement;
+        this.requirementDescription = requirementDescription;
+        this.codeTemplate = codeTemplate;
+        this.correctCode = correctCode;
+
+    }
 }
