@@ -1,15 +1,18 @@
 using Newtonsoft.Json;
 using PlayFab;
 using PlayFab.ClientModels;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class EnemyLoader : MonoBehaviour
 {
     //public GameObject[] enemyGameObjects;
     public GameObject enemyListParent;
+    public string enemiesUrl = "http://localhost/ByteQuestWeb/fetch_enemies.php";
     [System.Serializable]
     private class EnemyListWrapper
     {
@@ -18,8 +21,43 @@ public class EnemyLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FetchEnemyDataFromPlayFab(); 
+        StartCoroutine(FetchEnemiesData());
+        //FetchEnemyDataFromPlayFab(); 
     }
+    IEnumerator FetchEnemiesData()
+    {
+        using (UnityWebRequest www = UnityWebRequest.Get(enemiesUrl))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Error fetching enemies: " + www.error);
+            }
+            else
+            {
+                try
+                {
+                    // Use Newtonsoft.Json to deserialize the JSON
+                    List<Enemy> enemies = JsonConvert.DeserializeObject<List<Enemy>>(www.downloadHandler.text);
+                    AssignEnemyDataToGameObjects(enemies);
+                }
+                catch (JsonException e)
+                {
+                    Debug.LogError("Error parsing JSON: " + e.Message + "\nRaw JSON: " + www.downloadHandler.text);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("An unexpected error occurred: " + e.Message);
+                }
+            }
+        }
+    }
+
+
+
+
+
 
     void FetchEnemyDataFromPlayFab()
     {

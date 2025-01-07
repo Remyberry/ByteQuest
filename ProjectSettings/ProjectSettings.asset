@@ -598,7 +598,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: ENABLE_PLAYFABSERVER_API
+    Standalone: ENABLE_PLAYFABSERVER_API;ENABLE_PLAYFABADMIN_API
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
