@@ -54,7 +54,7 @@ public class EnemyTrigger : MonoBehaviour
 
                 SpriteRenderer parentSpriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
                 StaticData.enemysprite = parentSpriteRenderer.sprite;
-
+                Debug.Log(StaticData.enemyCorrectCode);
                 //sceneController.TransitionToBattleScene();
                 if (!StaticData.tutorialIsActive)
                 {

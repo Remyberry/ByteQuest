@@ -69,27 +69,27 @@ public class CodeChecking : MonoBehaviour
         startTime = StaticData.enemyTimeLimit;
         timeRemaining = startTime;
         timeSpent = startTime - timeRemaining;
-
-        LoadBestTime(() =>
+        if (StaticData.bestTime.ContainsKey(enemyName))
         {
-            if (StaticData.bestTime.ContainsKey(enemyName))
-            {
-                //display shortest time spent (best record)
-                enemyNameUI.SetText(enemyName);
-                enemyBestTimeUI.SetText("Best Time: " + StaticData.bestTime[enemyName]);
-            }
-            else
-            {
-                enemyNameUI.SetText(enemyName);
-                enemyBestTimeUI.SetText("Best Time: " + timeRemaining.ToString());
-            }
-        });
+            //display shortest time spent (best record)
+            enemyNameUI.SetText(enemyName);
+            enemyBestTimeUI.SetText("Best Time: " + StaticData.bestTime[enemyName]);
+        }
+        else
+        {
+            enemyNameUI.SetText(enemyName);
+            enemyBestTimeUI.SetText("Best Time: " + timeRemaining.ToString());
+        }
+        //LoadBestTime(() =>
+        //{
+            
+        //});
 
         
 
         string template = StaticData.enemyCodeTemplate;
         inputField.text = template;
-
+        Debug.Log(StaticData.enemyCorrectCode);
         string enemySourceCodeData = StaticData.enemyCorrectCode;
         correctCode.SetText(enemySourceCodeData);
 
@@ -284,9 +284,7 @@ public class CodeChecking : MonoBehaviour
             if (result.Data != null && result.Data.ContainsKey("PlayerBestTime"))
             {
                 string bestTimeJson = result.Data["PlayerBestTime"].Value;
-                SerializableDictionary<string, string> deserializedBestTime =
-                    JsonUtility.FromJson<SerializableDictionary<string, string>>(bestTimeJson);
-
+                SerializableDictionary<string, string> deserializedBestTime = JsonUtility.FromJson<SerializableDictionary<string, string>>(bestTimeJson);
                 StaticData.bestTime = deserializedBestTime.ToDictionary();
                 Debug.Log("Best time data successfully loaded from PlayFab.");
             }
@@ -310,9 +308,7 @@ public class CodeChecking : MonoBehaviour
         if (result.Data != null && result.Data.ContainsKey("PlayerBestTime"))
         {
             string bestTimeJson = result.Data["PlayerBestTime"].Value;
-            SerializableDictionary<string, string> deserializedBestTime =
-                JsonUtility.FromJson<SerializableDictionary<string, string>>(bestTimeJson);
-
+            SerializableDictionary<string, string> deserializedBestTime = JsonUtility.FromJson<SerializableDictionary<string, string>>(bestTimeJson);
             StaticData.bestTime = deserializedBestTime.ToDictionary();
             Debug.Log("Best time data successfully loaded from PlayFab.");
         }
